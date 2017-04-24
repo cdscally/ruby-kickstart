@@ -17,3 +17,19 @@
 # match_maker true,  true,  true, true, nil     # => [false, true]
 # match_maker true,  true,  true, 0, nil        # => [false, true]
 
+
+#struggled to complete this until I looked at the solution and realised what !! does - before this I was getting false == nil evaluating as false
+
+def match_maker(definer, *args)
+  out = []
+  args.each_slice(2) {|a,b|
+    a = !!a
+    b = !!b
+    if definer
+      out.push a != b
+    else
+      out.push a == b
+    end
+    }
+  out
+end

@@ -28,5 +28,22 @@
 # shared [1,2,:c], ['a','b',:c]      # => [{1=>[true, nil], 2=>[true, nil], :c=>[true, true], "a"=>[nil, true], "b"=>[nil, true]}, [:c]]
 # shared [1,2,3], [3,2,1]            # => [{1=>[true, true], 2=>[true, true], 3=>[true, true]}, [1, 2, 3]]
 
+
+#got part way on this, couldn't get it to give the right output so used solution
+
 def shared(a, b)
+
+  out = {}
+
+  a.each{|i|
+    out[i] ||= [true,nil]
+    out[i][0] = true
+  }
+
+  b.each{|i|
+    out[i] ||= [nil,true]
+    out[i][1] = true
+  }
+  good = out.select{ |key, value| value == [true, true] }.map { |key, value| key }
+  return out, good.sort
 end

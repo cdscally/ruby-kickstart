@@ -25,12 +25,16 @@
 # artist.age    # => 47
 
 
+# couldn't figure this one out, used solution and typed in here
 class Person
-  attr_accessor :name
+  attr_accessor :name, :age, :quote
 
-  def initialize(&initializer)
-    @initializer = initializer
-    initializer.call self
+  def initialize(options = Hash.new, &initializer)
+    self.name = options[:name]
+    self.age = options[:age]
+    self.quote = options[:quote]
+    @initializer = (initializer || Proc.new { |person| })
+    reinit
   end
 
   def reinit

@@ -20,9 +20,64 @@
 # f.to_s               # => "50/100"
 # f.to_f               # => 0.5
 
+
+
+# partly got this one, but couldn't get it right, had to refer to solution
 class Fraction
+
+  attr_accessor :numerator, :denominator
+
+  def initialize (numerator,denominator)
+    self.numerator = numerator
+    self.denominator = denominator
+  end
+
+  def to_f
+    numerator.to_f/denominator
+  end
+
+  def to_s
+    "#{numerator}/#{denominator}"
+  end
+
+  def lowest
+    Fraction.new(numerator/gcd(numerator, denominator),denominator/gcd(numerator,denominator))
+  end
+
   def gcd(a,b)
     return a if b == 0
     gcd(b, a%b)
   end
 end
+
+
+
+#suggested solution
+
+=begin
+class Fraction
+  attr_accessor :numerator, :denominator
+
+  def initialize(numerator, denominator)
+    self.numerator, self.denominator = numerator, denominator
+  end
+
+  def to_s
+    "#{numerator}/#{denominator}"
+  end
+
+  def to_f
+    numerator / denominator.to_f
+  end
+
+  def gcd(a, b)
+    return a if b == 0
+    gcd b, (a % b)
+  end
+
+  def lowest
+    divisor = gcd(numerator, denominator)
+    Fraction.new(numerator/divisor, denominator/divisor)
+  end
+end
+=end

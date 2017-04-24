@@ -24,7 +24,19 @@
 # USER:     BYE
 
 def deaf_grandma
-
+  str = gets.chomp
+  until str == "BYE"
+    if str == ""
+      puts "HUH?! SPEAK UP, SONNY!"
+      str = gets.chomp
+    elsif str != str.upcase
+      puts "HUH?! SPEAK UP, SONNY!"
+      str = gets.chomp
+    else
+      puts "NO, NOT SINCE 1938!"
+      str = gets.chomp
+    end
+  end
 end
 
 

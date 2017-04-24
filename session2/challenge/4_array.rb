@@ -7,3 +7,8 @@
 # get_squares [25, 4, 9, 6, 50, 16, 5] # => [4, 5]
 
 # This time you will have to define the method, it's called: get_squares
+def get_squares(ary)
+  ary2 = ary.map{|i| i**2}
+  ary2.select!{|i| ary.include? i}
+  ary2.sort.map!{|i| (i**0.5).to_i}
+end

@@ -8,3 +8,16 @@
 # staircase 4  # => {1 => [], 3 => [2]}
 # staircase 5  # => {1 => [], 3 => [2], 5 =>[2, 4]}
 
+def staircase(n)
+  out = {}
+  for i in 1..n
+    if i.odd?
+      a = []
+      for z in 1..i
+        a.push(z) if z.even?
+      end
+      out[i] = a
+    end
+  end
+  out
+end
